@@ -1,7 +1,7 @@
 package org.example;
 public class Heapsort {
 
-    public static void heap_elems(int[] mas, int cnt, int i){
+    private static void heap_elems(int[] mas, int cnt, int i){
         int max_el = i;
         int l = 2*i + 1; // левый дочерний
         int r = 2*i + 2; // правый дочерний

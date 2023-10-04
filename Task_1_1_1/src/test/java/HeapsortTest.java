@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.example.Heapsort;
+import java.util.Random;
+import java.util.Arrays;
 
 public class HeapsortTest {
 
@@ -14,9 +16,8 @@ public class HeapsortTest {
         assertArrayEquals(answer, test);
     }
 
-
     @Test
-    public void test3() {
+    public void test2() {
         int[] test = {};
         int[] answer = {};
         test = Heapsort.heapsort(test);
@@ -24,9 +25,23 @@ public class HeapsortTest {
     }
 
     @Test
-    public void test4() {
+    public void test3() {
         int[] test = {4, 3, 2, 4};
         int[] answer = {2, 3, 4, 4};
+        test = Heapsort.heapsort(test);
+        assertArrayEquals(answer, test);
+    }
+
+    @Test
+    public void test4(){
+        int[] test = new int[100000];
+        int[] answer = new int[100000];
+        Random r = new Random();
+        for (int i = 0; i < 100000; i ++){
+            test[i] = r.nextInt(Integer.MAX_VALUE);
+            answer[i] = test[i];
+        }
+        Arrays.sort(answer);
         test = Heapsort.heapsort(test);
         assertArrayEquals(answer, test);
     }

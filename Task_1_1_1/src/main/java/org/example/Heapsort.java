@@ -1,15 +1,16 @@
 package org.example;
+
 public class Heapsort {
 
     private static void heap_elems(int[] mas, int cnt, int i){
         int max_el = i;
-        int l = 2*i + 1; // левый дочерний
-        int r = 2*i + 2; // правый дочерний
+        int l = 2 * i + 1; // левый дочерний
+        int r = 2 * i + 2; // правый дочерний
         //поиск максимального из трех
-        if (l < cnt && mas[l] > mas[max_el]){ //если существует левый элемент и он больше корня
+        if (l < cnt && mas[l] > mas[max_el]){
             max_el = l;
         }
-        if (r < cnt && mas[r] > mas[max_el]){ //если существует правый элемент и он максимальный
+        if (r < cnt && mas[r] > mas[max_el]){
             max_el = r;
         }
         if (max_el != i){  // если корень не масимальный элемент, то меняем местами корень и дочерний
@@ -23,13 +24,11 @@ public class Heapsort {
 
 
 
-    public static int[] heapsort(int list[]){
+    public static int[] heapsort(int[] list){
+
 
         int[] mas = new int[list.length];
-
-        for (int i = 0; i < list.length; i++) {
-            mas[i] = list[i];
-        }
+        System.arraycopy(list, 0, mas, 0, list.length);
 
         int cnt = mas.length;
         for (int i = cnt / 2 - 1; i >= 0; i--) // преобразование кучи относительно элементов у которых есть дочерние

@@ -1,7 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
 import org.example.Polynomial;
 import org.junit.jupiter.api.Test;
 

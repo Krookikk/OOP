@@ -11,6 +11,7 @@ public class Polynomial {
     }
 
     /** сложение многочленов.
+     *
      * @param a - второй многочлен
      * @return возвращает сумму многочленов
      */
@@ -31,6 +32,7 @@ public class Polynomial {
     }
 
     /** разность многочленов.
+     *
      * @param a - второй многочлен
      * @return возвращает разность двух многочленов
      */
@@ -49,6 +51,7 @@ public class Polynomial {
     }
 
     /** произведение многочленов.
+     *
      * @param a - второй мн-н
      * @return возвращает произведение
      */
@@ -63,6 +66,7 @@ public class Polynomial {
     }
 
     /** вычисление значения в точке.
+     *
      * @param x - значение x
      * @return возвращает значение многочлена при x
      */
@@ -74,6 +78,7 @@ public class Polynomial {
         return a;
     }
     /** производная.
+     *
      * @param a - кол-во производных
      * @return возвращает a'ую производную
      */
@@ -93,6 +98,7 @@ public class Polynomial {
     }
 
     /** равенство многочленов.
+     *
      * @param a - второй многочлен
      * @return возвращает truo or false -если равны или нет
      */
@@ -110,9 +116,11 @@ public class Polynomial {
                 ans += "- ";
             } else if (this.mas[i] < 0) {
                 ans += " - ";
-            } if (this.mas[i] > 0 && i != this.mas.length - 1) {
+            }
+            if (this.mas[i] > 0 && i != this.mas.length - 1) {
                 ans += " + ";
-            } if (i == 0 && this.mas[i] != 0) {
+            }
+            if (i == 0 && this.mas[i] != 0) {
                 ans += Math.abs(this.mas[i]);
             } else if (i == 1 && this.mas[i] != 0) {
                 if (this.mas[i] == 1 || this.mas[i] == -1) {

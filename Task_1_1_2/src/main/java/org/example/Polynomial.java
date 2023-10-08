@@ -9,6 +9,11 @@ public class Polynomial {
         mas = new int[list.length];
         System.arraycopy(list, 0, mas, 0, list.length);
     }
+
+    /** сложение многочленов.
+     * @param a - второй многочлен
+     * @return возвращает сумму многочленов
+     */
     public Polynomial plus(final Polynomial a) { //сложение
         int cnt = Math.max(this.mas.length, a.mas.length);
         var arr = new Polynomial(new int[cnt]);
@@ -25,6 +30,10 @@ public class Polynomial {
         return arr;
     }
 
+    /** разность многочленов.
+     * @param a - второй многочлен
+     * @return возвращает разность двух многочленов
+     */
     public Polynomial minus(final Polynomial a) { //вычитание
         int cnt = Math.max(this.mas.length, a.mas.length);
         var arr = new Polynomial(new int[cnt]);
@@ -39,6 +48,10 @@ public class Polynomial {
         return arr;
     }
 
+    /** произведение многочленов.
+     * @param a - второй мн-н
+     * @return возвращает произведение
+     */
     public Polynomial mul(final Polynomial a) { //умножение
         var arr = new Polynomial(new int[this.mas.length + a.mas.length - 1]);
         for (int i = 0; i < this.mas.length; i++) {
@@ -49,6 +62,10 @@ public class Polynomial {
         return arr;
     }
 
+    /** вычисление значения в точке.
+     * @param x - значение x
+     * @return возвращает значение многочлена при x
+     */
     public int value(final int x) { //вычисление значения в точке
         int a = 0;
         for (int i = 0; i < this.mas.length; i++) {
@@ -56,7 +73,10 @@ public class Polynomial {
         }
         return a;
     }
-
+    /** производная.
+     * @param a - кол-во производных
+     * @return возвращает a'ую производную
+     */
     public Polynomial diff(final int a) { //производная
         var arr = new Polynomial(new int[this.mas.length]);
         System.arraycopy(this.mas, 0, arr.mas, 0, this.mas.length);
@@ -72,11 +92,17 @@ public class Polynomial {
         return answer;
     }
 
+    /** равенство многочленов.
+     * @param a - второй многочлен
+     * @return возвращает truo or false -если равны или нет
+     */
     public Boolean equal(final Polynomial a) { //равенство
         Boolean ans = Arrays.equals(a.mas, this.mas);
         return ans;
     }
-
+    /** строковое представление.
+     * @return строковое представление многочлена
+     */
     public String toString() { //строковое представление
         String ans = new String();
         for (int i = this.mas.length - 1; i >= 0; i--) {

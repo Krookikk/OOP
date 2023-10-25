@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -88,13 +88,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -143,39 +143,6 @@ implements java.util.Iterator&lt;<a href="NewTree.html" title="class in org.exam
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#myTree">myTree</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#oldCount">oldCount</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>java.util.Queue&lt;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#queue">queue</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -212,13 +179,43 @@ implements java.util.Iterator&lt;<a href="NewTree.html" title="class in org.exam
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMyTree()">getMyTree</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOldCount()">getOldCount</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.Queue&lt;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQueue()">getQueue</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasNext()">hasNext</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#next()">next</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setMyTree(org.example.NewTree)">setMyTree</a></span>&#8203;(<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&nbsp;myTree)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOldCount(int)">setOldCount</a></span>&#8203;(int&nbsp;oldCount)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setQueue(java.util.Queue)">setQueue</a></span>&#8203;(java.util.Queue&lt;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&gt;&nbsp;queue)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -245,43 +242,6 @@ implements java.util.Iterator&lt;<a href="NewTree.html" title="class in org.exam
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="queue">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>queue</h4>
-<pre>public&nbsp;java.util.Queue&lt;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&gt; queue</pre>
-</li>
-</ul>
-<a id="oldCount">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>oldCount</h4>
-<pre>public&nbsp;int oldCount</pre>
-</li>
-</ul>
-<a id="myTree">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>myTree</h4>
-<pre>public&nbsp;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt; myTree</pre>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section>
 <ul class="blockList">
@@ -308,6 +268,60 @@ implements java.util.Iterator&lt;<a href="NewTree.html" title="class in org.exam
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="getQueue()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getQueue</h4>
+<pre class="methodSignature">public&nbsp;java.util.Queue&lt;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&gt;&nbsp;getQueue()</pre>
+</li>
+</ul>
+<a id="setQueue(java.util.Queue)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setQueue</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setQueue&#8203;(java.util.Queue&lt;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&gt;&nbsp;queue)</pre>
+</li>
+</ul>
+<a id="getOldCount()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOldCount</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getOldCount()</pre>
+</li>
+</ul>
+<a id="setOldCount(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setOldCount</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setOldCount&#8203;(int&nbsp;oldCount)</pre>
+</li>
+</ul>
+<a id="getMyTree()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMyTree</h4>
+<pre class="methodSignature">public&nbsp;<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&nbsp;getMyTree()</pre>
+</li>
+</ul>
+<a id="setMyTree(org.example.NewTree)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setMyTree</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setMyTree&#8203;(<a href="NewTree.html" title="class in org.example">NewTree</a>&lt;<a href="BFSIterator.html" title="type parameter in BFSIterator">Type1</a>&gt;&nbsp;myTree)</pre>
+</li>
+</ul>
 <a id="hasNext()">
 <!--   -->
 </a>
@@ -385,13 +399,13 @@ implements java.util.Iterator&lt;<a href="NewTree.html" title="class in org.exam
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

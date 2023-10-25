@@ -7,16 +7,42 @@ import java.util.NoSuchElementException;
 
 public class BFSIterator<Type1> implements Iterator<NewTree<Type1>> {
 
-    public Queue<NewTree<Type1>> queue;
-    public int oldCount;
-    public NewTree<Type1> myTree;
+    private Queue<NewTree<Type1>> queue;
+    private int oldCount;
+
+    public Queue<NewTree<Type1>> getQueue() {
+        return queue;
+    }
+
+    public void setQueue(Queue<NewTree<Type1>> queue) {
+        this.queue = queue;
+    }
+
+    public int getOldCount() {
+        return oldCount;
+    }
+
+    public void setOldCount(int oldCount) {
+        this.oldCount = oldCount;
+    }
+
+    public NewTree<Type1> getMyTree() {
+        return myTree;
+    }
+
+    public void setMyTree(NewTree<Type1> myTree) {
+        this.myTree = myTree;
+    }
+
+    private NewTree<Type1> myTree;
     public BFSIterator(NewTree<Type1> root) {
-        this.myTree = root;
-        this.oldCount = root.count;
-        this.queue = new LinkedList<>();
-        if (root != null) {
-            queue.add(root);
+        if (root == null){
+            throw new NullPointerException();
         }
+        this.myTree = root;
+        this.oldCount = root.getCount();
+        this.queue = new LinkedList<>();
+        queue.add(root);
     }
 
     @Override
@@ -26,7 +52,7 @@ public class BFSIterator<Type1> implements Iterator<NewTree<Type1>> {
 
     @Override
     public NewTree<Type1> next() {
-        if (oldCount != myTree.count){
+        if (oldCount != myTree.getCount()){
             throw new ConcurrentModificationException("You have changed the tree");
         }
         if (!hasNext()) {
@@ -34,7 +60,7 @@ public class BFSIterator<Type1> implements Iterator<NewTree<Type1>> {
         }
         NewTree<Type1> i = queue.poll();
         if (i != null) {
-            queue.addAll(i.children);
+            queue.addAll(i.getChildren());
         }
         return i;
     }

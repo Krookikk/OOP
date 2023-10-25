@@ -5,17 +5,43 @@ import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 
 public class DFSIterator<Type1> implements Iterator<NewTree<Type1>> {
-    public int oldCount;
-    public NewTree<Type1> myTree;
-    public Stack<NewTree<Type1>> stack;
+    private int oldCount;
+
+    public int getOldCount() {
+        return oldCount;
+    }
+
+    public void setOldCount(int oldCount) {
+        this.oldCount = oldCount;
+    }
+
+    public NewTree<Type1> getMyTree() {
+        return myTree;
+    }
+
+    public void setMyTree(NewTree<Type1> myTree) {
+        this.myTree = myTree;
+    }
+
+    public Stack<NewTree<Type1>> getStack() {
+        return stack;
+    }
+
+    public void setStack(Stack<NewTree<Type1>> stack) {
+        this.stack = stack;
+    }
+
+    private NewTree<Type1> myTree;
+    private Stack<NewTree<Type1>> stack;
 
 
     public DFSIterator(NewTree<Type1> root) {
-        this.stack = new Stack<>();
-        this.oldCount = root.count;
-        if (root != null) {
-            stack.push(root);
+        if (root == null){
+            throw new NullPointerException();
         }
+        this.stack = new Stack<>();
+        this.oldCount = root.getCount();
+        stack.push(root);
     }
 
     @Override
@@ -25,7 +51,7 @@ public class DFSIterator<Type1> implements Iterator<NewTree<Type1>> {
 
     @Override
     public NewTree<Type1> next() {
-        if (oldCount != myTree.count){
+        if (oldCount != myTree.getCount()){
             throw new ConcurrentModificationException("You have changed the tree");
         }
 
@@ -34,8 +60,8 @@ public class DFSIterator<Type1> implements Iterator<NewTree<Type1>> {
         }
 
         NewTree<Type1> i = stack.pop();
-        for (int j = i.children.size() - 1; j >= 0; j--) {
-            stack.push(i.children.get(j));
+        for (int j = i.getChildren().size() - 1; j >= 0; j--) {
+            stack.push(i.getChildren().get(j));
         }
         return i;
     }

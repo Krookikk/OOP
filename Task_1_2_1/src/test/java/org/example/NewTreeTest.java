@@ -7,7 +7,29 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NewTreeTest {
 
     @Test
-    public void test1() {
+    public void test1() throws CreateNullNodeException {
+        NewTree<String> tree1 = new NewTree<>("A");
+        NewTree<String> child1 = tree1.addChild("B");
+        NewTree<String> child2 = tree1.addChild("C");
+        assertEquals(2, tree1.getChildren().size());
+    }
+
+    @Test
+    public  void test2() throws CreateNullNodeException {
+        NewTree<String> tree1 = new NewTree<>("A");
+        NewTree<String> child1 = tree1.addChild("B");
+        NewTree<String> child2 = tree1.addChild("C");
+
+        NewTree<String> tree2 = new NewTree<>("X");
+        NewTree<String> child3 = tree2.addChild("Y");
+        NewTree<String> child4 = tree2.addChild("Z");
+
+        tree1.addChild(tree2);
+        assertEquals(3, tree1.getChildren().size());
+    }
+
+    @Test
+    public void test3() throws CreateNullNodeException {
         NewTree<String> tree1 = new NewTree<>("A");
         NewTree<String> child1 = tree1.addChild("B");
         NewTree<String> child2 = tree1.addChild("C");
@@ -22,7 +44,7 @@ public class NewTreeTest {
     }
 
     @Test
-    public void test2() {
+    public void test4() throws CreateNullNodeException {
         NewTree<String> tree1 = new NewTree<>("A");
         NewTree<String> child1 = tree1.addChild("B");
         NewTree<String> child2 = tree1.addChild("C");
@@ -37,14 +59,28 @@ public class NewTreeTest {
     }
 
     @Test
-    public void test3() {
+    public void test5() throws CreateNullNodeException {
         NewTree<String> tree1 = new NewTree<>("A");
         NewTree<String> child1 = tree1.addChild("B");
         NewTree<String> child2 = tree1.addChild("C");
 
         child1.remove();
-        assertNull(child1.children);
-        assertNull(child1.rootData);
-        assertEquals(1, tree1.children.size());
+        assertNull(child1.getParent());
+        assertEquals(1, tree1.getChildren().size());
     }
+
+    @Test
+    public void test6() throws CreateNullNodeException {
+        NewTree<String> tree1 = new NewTree<>("A");
+        NewTree<String> child1 = tree1.addChild("B");
+        NewTree<String> child2 = tree1.addChild("C");
+
+        NewTree<String> tree2 = new NewTree<>("X");
+        NewTree<String> child3 = tree2.addChild("Y");
+        NewTree<String> child4 = tree2.addChild("Z");
+
+        tree1.addChild(tree2);
+        assertEquals("rootData : A\nParent : no parent\nChildren : B, C, X", tree1.toString());
+    }
+
 }

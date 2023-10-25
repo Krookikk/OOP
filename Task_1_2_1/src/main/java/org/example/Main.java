@@ -6,23 +6,5 @@ public class Main {
         var a = tree.addChild("A");
         var b = a.addChild("B");
         b.addChild("J");
-        //b.remove();
-        System.out.println(a.getChildren().get(0).getRootData());
-        System.out.println(a.getChildren().size());
-        NewTree<String> subtree = new NewTree<>("R2");
-        subtree.addChild("C");
-        subtree.addChild("D");
-        tree.addChild(subtree);
-
-        b.remove();
-        System.out.println(tree.getChildren().size());
-        System.out.println(b.getRootData());
-        for (NewTree<?> i: tree){
-            System.out.println(i.getRootData());
-        }
-        System.out.println(tree);
-
-
-
     }
 }

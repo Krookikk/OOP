@@ -39,6 +39,7 @@ public class DFSIterator<Type1> implements Iterator<NewTree<Type1>> {
         if (root == null){
             throw new NullPointerException();
         }
+        this.myTree = root;
         this.stack = new Stack<>();
         this.oldCount = root.getCount();
         stack.push(root);

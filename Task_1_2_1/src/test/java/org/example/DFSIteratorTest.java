@@ -29,11 +29,13 @@ public class DFSIteratorTest {
         NewTree<String> tree2 = new NewTree<>("X");
         NewTree<String> child3 = tree2.addChild("Y");
         NewTree<String> child4 = tree2.addChild("Z");
+        tree1.addChild(tree2);
 
         NewTree<String> child5 = tree1.addChild("S");
 
-        tree1.addChild(tree2);
+
         var a = new DFSIterator<String>(tree1);
+        a.next();
         a.next();
         a.next();
         assertSame(a.next(), child3);

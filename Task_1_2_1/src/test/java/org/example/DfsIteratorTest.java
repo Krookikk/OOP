@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 import org.junit.jupiter.api.Test;
 
+/**
+ * класс.
+ */
 public class DfsIteratorTest {
     @Test
     public void test1() throws CreateNullNodeException {

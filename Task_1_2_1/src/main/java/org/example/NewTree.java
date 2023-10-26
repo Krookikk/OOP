@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * класс.
+/** класс.
+ *
  * @param <Type1>
  */
 public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
@@ -46,9 +46,9 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     private Type1 rootData;
     private List<NewTree<Type1>> children;
     private NewTree<Type1> parent;
-    
-    /**
-     * конструктор.
+
+    /** конструктор.
+     *
      * @param data
      * @throws CreateNullNodeException
      */
@@ -63,8 +63,8 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
         }
     }
 
-    /**
-     * добавление элемента.
+    /** добавление элемента.
+     *
      * @param data
      * @return
      * @throws CreateNullNodeException
@@ -78,8 +78,8 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
         return child;
     }
 
-    /**
-     * добавление поддерева.
+    /** добавление поддерева.
+     *
      * @param child
      * @return
      */
@@ -94,8 +94,8 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     }
 
 
-    /**
-     * удаление эемента.
+    /** удаление эемента.
+     *
      */
     public void remove() {
         this.count += 1;

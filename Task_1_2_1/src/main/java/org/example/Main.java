@@ -1,13 +1,11 @@
 package org.example;
 
-/**
- * мэйн.
+/** мэйн.
+ *
  */
 public class Main {
-    /**
-     * конструктор.
-     * @param args
-     * @throws CreateNullNodeException
+    /** конструктор.
+     *
      */
     public static void main(final String[] args) throws CreateNullNodeException {
         NewTree<String> tree = new NewTree<>("R1");

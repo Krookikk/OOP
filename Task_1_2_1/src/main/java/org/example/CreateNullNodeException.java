@@ -1,7 +1,7 @@
 package org.example;
 
-/**
- * ошибка.
+/** ошибка.
+ *
  */
 public class CreateNullNodeException extends Exception {
     public CreateNullNodeException() {

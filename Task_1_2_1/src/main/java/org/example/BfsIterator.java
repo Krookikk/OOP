@@ -7,8 +7,8 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 
 
-/**
- * bfsiterator.
+/** bfsiterator.
+ *
  * @param <Type1>
  */
 public class BfsIterator<Type1> implements Iterator<NewTree<Type1>> {
@@ -42,8 +42,8 @@ public class BfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 
     private NewTree<Type1> myTree;
 
-    /**
-     * конструктор.
+    /** конструктор.
+     *
      * @param root
      */
     public BfsIterator(NewTree<Type1> root) {

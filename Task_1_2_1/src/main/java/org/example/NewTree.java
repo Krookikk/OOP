@@ -51,29 +51,28 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
             this.parent = null;
             this.rootData = data;
             this.children = new ArrayList<>();
-        }
-        else {
+        } else {
             throw new CreateNullNodeException();
         }
     }
 
     public NewTree<Type1> addChild(Type1 data) throws CreateNullNodeException {
 
-        NewTree<Type1> Child = new NewTree<>(data);
+        NewTree<Type1> child = new NewTree<>(data);
         this.count += 1;
-        Child.parent = this;
-        this.children.add(Child);
-        return Child;
+        child.parent = this;
+        this.children.add(child);
+        return child;
     }
 
-    public NewTree<Type1> addChild(NewTree<Type1> Child) {
-        if (Child == null) {
+    public NewTree<Type1> addChild(NewTree<Type1> child) {
+        if (child == null) {
             throw new NullPointerException();
         }
-        Child.parent = this;
+        child.parent = this;
         this.count += 1;
-        this.children.add(Child);
-        return Child;
+        this.children.add(child);
+        return child;
     }
 
 

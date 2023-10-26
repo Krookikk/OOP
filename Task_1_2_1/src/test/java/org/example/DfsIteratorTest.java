@@ -1,8 +1,10 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class DfsIteratorTest {
     @Test
@@ -55,7 +57,7 @@ public class DfsIteratorTest {
         String[] test = {"A", "B", "X", "Y", "Z", "S"};
         int j = 0;
         var a = new DfsIterator<String>(tree1);
-        while(a.hasNext()) {
+        while (a.hasNext()) {
             var i = a.next();
             assertEquals(i.getRootData(), test[j]);
             j++;

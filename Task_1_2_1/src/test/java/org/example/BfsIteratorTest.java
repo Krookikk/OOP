@@ -1,8 +1,9 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BfsIteratorTest {
     @Test
     public void test1() throws CreateNullNodeException {
@@ -51,7 +52,7 @@ public class BfsIteratorTest {
 
         String[] test = {"A", "B", "X", "S", "Y", "Z"};
         int j = 0;
-        for (NewTree<String> i: tree1) {
+        for (NewTree<String> i : tree1) {
             assertEquals(i.getRootData(), test[j]);
             j++;
         }

@@ -1,8 +1,10 @@
 package org.example;
-import java.util.Iterator;
-import java.util.Stack;
+
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Stack;
+
 
 public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
     private int oldCount;
@@ -36,7 +38,7 @@ public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 
 
     public DfsIterator(NewTree<Type1> root) {
-        if (root == null){
+        if (root == null) {
             throw new NullPointerException();
         }
         this.myTree = root;

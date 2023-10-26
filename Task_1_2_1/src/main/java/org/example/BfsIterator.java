@@ -1,9 +1,12 @@
 package org.example;
+
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
+import java.util.Queue;
+
+
 
 public class BfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ *
+ * @param <Type1>
+ */
 public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     private int count;
 
@@ -44,7 +48,11 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     private NewTree<Type1> parent;
 
 
-
+    /**
+     *
+     * @param data
+     * @throws CreateNullNodeException
+     */
     public NewTree(Type1 data) throws CreateNullNodeException {
         if (data != null) {
             this.count = 0;
@@ -56,6 +64,12 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
         }
     }
 
+    /**
+     *
+     * @param data
+     * @return
+     * @throws CreateNullNodeException
+     */
     public NewTree<Type1> addChild(Type1 data) throws CreateNullNodeException {
 
         NewTree<Type1> child = new NewTree<>(data);
@@ -65,6 +79,11 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
         return child;
     }
 
+    /**
+     *
+     * @param child
+     * @return
+     */
     public NewTree<Type1> addChild(NewTree<Type1> child) {
         if (child == null) {
             throw new NullPointerException();
@@ -76,6 +95,9 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     }
 
 
+    /**
+     *
+     */
     public void remove() {
         this.count += 1;
         this.parent.children.remove(this);

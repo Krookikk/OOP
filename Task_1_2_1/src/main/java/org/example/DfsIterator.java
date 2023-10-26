@@ -5,7 +5,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-
+/**
+ *
+ * @param <Type1>
+ */
 public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
     private int oldCount;
 
@@ -36,7 +39,10 @@ public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
     private NewTree<Type1> myTree;
     private Stack<NewTree<Type1>> stack;
 
-
+    /**
+     *
+     * @param root
+     */
     public DfsIterator(NewTree<Type1> root) {
         if (root == null) {
             throw new NullPointerException();

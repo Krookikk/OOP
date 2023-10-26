@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Stack;
 
 /**
- *
+ * класс.
  * @param <Type1>
  */
 public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
@@ -40,7 +40,7 @@ public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
     private Stack<NewTree<Type1>> stack;
 
     /**
-     *
+     * конструктор.
      * @param root
      */
     public DfsIterator(NewTree<Type1> root) {

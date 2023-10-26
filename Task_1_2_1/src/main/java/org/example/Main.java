@@ -1,9 +1,14 @@
 package org.example;
 
 /**
- *
+ * мэйн.
  */
 public class Main {
+    /**
+     * конструктор.
+     * @param args
+     * @throws CreateNullNodeException
+     */
     public static void main(final String[] args) throws CreateNullNodeException {
         NewTree<String> tree = new NewTree<>("R1");
         var a = tree.addChild("A");

@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"BFSIterator"},{"p":"org.example","l":"CreateNullNodeException"},{"p":"org.example","l":"DFSIterator"},{"p":"org.example","l":"Main"},{"p":"org.example","l":"NewTree"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"BfsIterator"},{"p":"org.example","l":"CreateNullNodeException"},{"p":"org.example","l":"DfsIterator"},{"p":"org.example","l":"Main"},{"p":"org.example","l":"NewTree"}]

@@ -1,22 +1,11 @@
 package org.example;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Stack;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 
-public class BFSIterator<Type1> implements Iterator<NewTree<Type1>> {
-
-    private Queue<NewTree<Type1>> queue;
+public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
     private int oldCount;
-
-    public Queue<NewTree<Type1>> getQueue() {
-        return queue;
-    }
-
-    public void setQueue(Queue<NewTree<Type1>> queue) {
-        this.queue = queue;
-    }
 
     public int getOldCount() {
         return oldCount;
@@ -34,36 +23,47 @@ public class BFSIterator<Type1> implements Iterator<NewTree<Type1>> {
         this.myTree = myTree;
     }
 
+    public Stack<NewTree<Type1>> getStack() {
+        return stack;
+    }
+
+    public void setStack(Stack<NewTree<Type1>> stack) {
+        this.stack = stack;
+    }
+
     private NewTree<Type1> myTree;
-    public BFSIterator(NewTree<Type1> root) {
+    private Stack<NewTree<Type1>> stack;
+
+
+    public DfsIterator(NewTree<Type1> root) {
         if (root == null){
             throw new NullPointerException();
         }
         this.myTree = root;
+        this.stack = new Stack<>();
         this.oldCount = root.getCount();
-        this.queue = new LinkedList<>();
-        queue.add(root);
+        stack.push(root);
     }
 
     @Override
     public boolean hasNext() {
-        return !queue.isEmpty();
+        return !stack.isEmpty();
     }
 
     @Override
     public NewTree<Type1> next() {
-        if (oldCount != myTree.getCount()){
+        if (oldCount != myTree.getCount()) {
             throw new ConcurrentModificationException("You have changed the tree");
         }
+
         if (!hasNext()) {
-            throw new NoSuchElementException("Not elem");
+            throw new NoSuchElementException("Not elems");
         }
-        NewTree<Type1> i = queue.poll();
-        if (i != null) {
-            queue.addAll(i.getChildren());
+
+        NewTree<Type1> i = stack.pop();
+        for (int j = i.getChildren().size() - 1; j >= 0; j--) {
+            stack.push(i.getChildren().get(j));
         }
         return i;
     }
-
-
 }

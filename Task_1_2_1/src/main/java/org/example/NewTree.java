@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class NewTree<Type1> implements Iterable<NewTree<Type1>>{
+public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     private int count;
 
     public Type1 getRootData() {
@@ -77,7 +77,7 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>>{
     }
 
 
-    public void remove(){
+    public void remove() {
         this.count += 1;
         this.parent.children.remove(this);
         this.parent = null;
@@ -85,7 +85,7 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>>{
 
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -112,29 +112,30 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>>{
         return true;
     }
     @Override
-    public String toString(){
+    public String toString() {
         var str = new StringBuilder();
         str.append("rootData : ");
         str.append(this.rootData.toString());
         str.append("\nParent : ");
         if (parent != null) {
-            str.append(this.parent.getRootData().toString());
+            str.append(this.parent.rootData.toString());
         } else {
             str.append("no parent");
         }
         str.append("\nChildren : ");
-        for (int i = 0; i < this.children.size() - 1; i ++){
+        for (int i = 0; i < this.children.size() - 1; i++) {
             str.append(this.children.get(i).rootData.toString());
             str.append(", ");
         }
-        str.append(this.children.get(this.children.size() - 1).rootData.toString());
+        int cnt = this.children.size() - 1;
+        str.append(this.children.get(cnt).rootData.toString());
 
         return str.toString();
     }
 
     @Override
     public Iterator<NewTree<Type1>> iterator() {
-        return new BFSIterator<Type1>(this);
+        return new BfsIterator<Type1>(this);
     }
 
 

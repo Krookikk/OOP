@@ -16,7 +16,7 @@ public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 
     /** конструктор.
      *
-     * @param root
+     * @param root root.
      */
     public DfsIterator(NewTree<Type1> root) {
         if (root == null) {

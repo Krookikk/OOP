@@ -84,6 +84,9 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
         this.parent = null;
     }
 
+    /**
+     *  удаление элемента.
+     */
     public void removeData() {
         this.count += 1;
         this.parent.children.addAll(this.children);

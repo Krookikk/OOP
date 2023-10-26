@@ -10,38 +10,13 @@ import java.util.Stack;
  * @param <Type1> Type1.
  */
 public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
-    private int oldCount;
-
-    public int getOldCount() {
-        return oldCount;
-    }
-
-    public void setOldCount(int oldCount) {
-        this.oldCount = oldCount;
-    }
-
-    public NewTree<Type1> getMyTree() {
-        return myTree;
-    }
-
-    public void setMyTree(NewTree<Type1> myTree) {
-        this.myTree = myTree;
-    }
-
-    public Stack<NewTree<Type1>> getStack() {
-        return stack;
-    }
-
-    public void setStack(Stack<NewTree<Type1>> stack) {
-        this.stack = stack;
-    }
-
-    private NewTree<Type1> myTree;
-    private Stack<NewTree<Type1>> stack;
+    private final int oldCount;
+    private final NewTree<Type1> myTree;
+    private final Stack<NewTree<Type1>> stack;
 
     /** конструктор.
      *
-     * @param root 
+     * @param root
      */
     public DfsIterator(NewTree<Type1> root) {
         if (root == null) {

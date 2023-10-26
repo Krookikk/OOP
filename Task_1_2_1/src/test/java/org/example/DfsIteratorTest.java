@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 public class DfsIteratorTest {
     @Test
-    public void test1() throws CreateNullNodeException {
+    public void testHasNext() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
         var child2 = tree1.addChild("C");
@@ -26,7 +26,7 @@ public class DfsIteratorTest {
     }
 
     @Test
-    public void test2() throws CreateNullNodeException {
+    public void testNext() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
 
@@ -36,8 +36,6 @@ public class DfsIteratorTest {
         tree1.addChild(tree2);
 
         var child5 = tree1.addChild("S");
-
-
         var a = new DfsIterator<String>(tree1);
         a.next();
         a.next();
@@ -46,7 +44,7 @@ public class DfsIteratorTest {
     }
 
     @Test
-    public void test3() throws CreateNullNodeException {
+    public void testDfsIterator() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
 

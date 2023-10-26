@@ -13,34 +13,9 @@ import java.util.Queue;
  */
 public class BfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 
-    private Queue<NewTree<Type1>> queue;
-    private int oldCount;
-
-    public Queue<NewTree<Type1>> getQueue() {
-        return queue;
-    }
-
-    public void setQueue(Queue<NewTree<Type1>> queue) {
-        this.queue = queue;
-    }
-
-    public int getOldCount() {
-        return oldCount;
-    }
-
-    public void setOldCount(int oldCount) {
-        this.oldCount = oldCount;
-    }
-
-    public NewTree<Type1> getMyTree() {
-        return myTree;
-    }
-
-    public void setMyTree(NewTree<Type1> myTree) {
-        this.myTree = myTree;
-    }
-
-    private NewTree<Type1> myTree;
+    private final Queue<NewTree<Type1>> queue;
+    private final int oldCount;
+    private final NewTree<Type1> myTree;
 
     /** конструктор.
      *

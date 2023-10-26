@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 public class NewTreeTest {
 
     @Test
-    public void test1() throws CreateNullNodeException {
+    public void testAddChild() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
         var child2 = tree1.addChild("C");
@@ -21,7 +21,7 @@ public class NewTreeTest {
     }
 
     @Test
-    public  void test2() throws CreateNullNodeException {
+    public  void testAddChildTree() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
         var child2 = tree1.addChild("C");
@@ -35,7 +35,7 @@ public class NewTreeTest {
     }
 
     @Test
-    public void test3() throws CreateNullNodeException {
+    public void testEquals() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
         var child2 = tree1.addChild("C");
@@ -50,7 +50,7 @@ public class NewTreeTest {
     }
 
     @Test
-    public void test4() throws CreateNullNodeException {
+    public void testEquals2() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
         var child2 = tree1.addChild("C");
@@ -65,7 +65,7 @@ public class NewTreeTest {
     }
 
     @Test
-    public void test5() throws CreateNullNodeException {
+    public void testRemove() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
         var child2 = tree1.addChild("C");
@@ -76,7 +76,7 @@ public class NewTreeTest {
     }
 
     @Test
-    public void test6() throws CreateNullNodeException {
+    public void testtoString() throws CreateNullNodeException {
         var tree1 = new NewTree<>("A");
         var child1 = tree1.addChild("B");
         var child2 = tree1.addChild("C");
@@ -87,6 +87,20 @@ public class NewTreeTest {
 
         tree1.addChild(tree2);
         assertEquals("rootData : A\nParent : no parent\nChildren : B, C, X", tree1.toString());
+    }
+
+    @Test
+    public void testRemoveData() throws CreateNullNodeException {
+        var tree1 = new NewTree<>("A");
+        var child1 = tree1.addChild("B");
+
+        var tree2 = new NewTree<>("X");
+        var child3 = tree2.addChild("Y");
+        var child4 = tree2.addChild("Z");
+        tree1.addChild(tree2);
+        var child5 = tree1.addChild("S");
+        tree2.removeData();
+        assertEquals(4, tree1.getChildren().size());
     }
 
 }

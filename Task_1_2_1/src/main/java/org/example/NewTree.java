@@ -10,42 +10,23 @@ import java.util.List;
  */
 public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     private int count;
+    private Type1 rootData;
+    private List<NewTree<Type1>> children;
+    private NewTree<Type1> parent;
 
     public Type1 getRootData() {
         return rootData;
     }
-
-    public void setRootData(Type1 rootData) {
-        this.rootData = rootData;
-    }
-
     public List<NewTree<Type1>> getChildren() {
         return children;
     }
-
-    public void setChildren(List<NewTree<Type1>> children) {
-        this.children = children;
-    }
-
     public NewTree<Type1> getParent() {
         return parent;
     }
-
-    public void setParent(NewTree<Type1> parent) {
-        this.parent = parent;
-    }
-
     public int getCount() {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    private Type1 rootData;
-    private List<NewTree<Type1>> children;
-    private NewTree<Type1> parent;
 
     /** конструктор.
      *
@@ -94,11 +75,18 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     }
 
 
-    /** удаление эемента.
+    /** удаление поддерева..
      *
      */
     public void remove() {
         this.count += 1;
+        this.parent.children.remove(this);
+        this.parent = null;
+    }
+
+    public void removeData() {
+        this.count += 1;
+        this.parent.children.addAll(this.children);
         this.parent.children.remove(this);
         this.parent = null;
     }
@@ -149,7 +137,6 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
         }
         int cnt = this.children.size() - 1;
         str.append(this.children.get(cnt).rootData.toString());
-
         return str.toString();
     }
 
@@ -157,6 +144,4 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     public Iterator<NewTree<Type1>> iterator() {
         return new BfsIterator<Type1>(this);
     }
-
-
 }

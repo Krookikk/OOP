@@ -9,7 +9,7 @@ import java.util.Queue;
 
 /** bfsiterator.
  *
- * @param <Type1>
+ * @param <Type1> Type1.
  */
 public class BfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 
@@ -44,7 +44,7 @@ public class BfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 
     /** конструктор.
      *
-     * @param root
+     * @param root - дерево.
      */
     public BfsIterator(NewTree<Type1> root) {
         if (root == null) {

@@ -6,7 +6,7 @@ import java.util.List;
 
 /** класс.
  *
- * @param <Type1>
+ * @param <Type1> Type1.
  */
 public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
     private int count;
@@ -49,8 +49,8 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
 
     /** конструктор.
      *
-     * @param data
-     * @throws CreateNullNodeException
+     * @param data - данные.
+     * @throws CreateNullNodeException - для ошибки.
      */
     public NewTree(Type1 data) throws CreateNullNodeException {
         if (data != null) {
@@ -65,9 +65,9 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
 
     /** добавление элемента.
      *
-     * @param data
-     * @return
-     * @throws CreateNullNodeException
+     * @param data - элемент.
+     * @return - преобразованный элемент.
+     * @throws CreateNullNodeException - ошибка.
      */
     public NewTree<Type1> addChild(Type1 data) throws CreateNullNodeException {
 
@@ -80,8 +80,8 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
 
     /** добавление поддерева.
      *
-     * @param child
-     * @return
+     * @param child - поддерево.
+     * @return - то же поддерево.
      */
     public NewTree<Type1> addChild(NewTree<Type1> child) {
         if (child == null) {

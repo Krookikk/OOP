@@ -7,7 +7,7 @@ import java.util.Stack;
 
 /** класс.
  *
- * @param <Type1>
+ * @param <Type1> Type1.
  */
 public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
     private int oldCount;
@@ -41,7 +41,7 @@ public class DfsIterator<Type1> implements Iterator<NewTree<Type1>> {
 
     /** конструктор.
      *
-     * @param root
+     * @param root 
      */
     public DfsIterator(NewTree<Type1> root) {
         if (root == null) {

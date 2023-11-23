@@ -18,8 +18,6 @@ public class Grade implements Comparable<Grade> {
         return est;
     }
 
-
-
     public Grade(String nameValue, int semValue, int estValue) {
         this.name = nameValue;
         this.sem = semValue;

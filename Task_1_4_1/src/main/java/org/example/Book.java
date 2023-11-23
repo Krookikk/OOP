@@ -8,12 +8,17 @@ public class Book {
     private List<Grade> book = new ArrayList<>();
     private final String studentName;
     private int finalGrade;
+
     public Book(String Name){
         this.studentName = Name;
     }
 
     public void addGrade(String name, int sem, int est){
-        book.add(new Grade(name, sem, est));
+        if (book.stream().noneMatch(book -> book.getSem() == sem &&
+                book.getName().equals(name))) {
+            book.add(new Grade(name, sem, est));
+        }
+
     }
 
     public Double averageScore(){
@@ -36,11 +41,11 @@ public class Book {
 
 
     public Boolean redDiplom(){
-        Collections.sort(book);
-
         if (book.isEmpty()) {
             return false;
         }
+
+        Collections.sort(book);
 
         int cntFives = 0, all = 0;
         var arr = new ArrayList<String>();
@@ -62,8 +67,27 @@ public class Book {
         return excellentPercentage >= 75 && (finalGrade == 5);
     }
 
+    public Boolean incStipend(int sem) {
+        Collections.sort(book);
 
+        int i = 0;
+        if (sem < book.get(i).getSem()) {
+            return false;
+        }
+        while (i < book.size() && sem >= book.get(i).getSem()) {
+            if (book.get(i).getSem() == sem) {
+                if (book.get(i).getEst() != 5) {
+                    return false;
+                }
+            }
+            i ++;
+        }
+        return true;
+    }
 
+    public Integer size() {
+        return this.book.size();
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Book {
@@ -31,31 +32,33 @@ public class Book {
     public void setFinalGrade(int x){
         finalGrade = x;
     }
+
+
+
     public Boolean redDiplom(){
+        Collections.sort(book);
+
         if (book.isEmpty()) {
             return false;
         }
 
-        int cnt = 0, all = 0;
-
+        int cntFives = 0, all = 0;
         var arr = new ArrayList<String>();
-        for (int i = book.size() - 1; i > 0; i--) {
-            if (book.get(i).getEst() == 5) {
-                if (!( arr.contains(book.get(i).getName()))){
-                    if (book.get(i).getEst() == 5){
-                        cnt += 1;
-                    }
-                    if (book.get(i).getEst() == 3){
-                        return false;
-                    }
 
+        for (int i = book.size() - 1; i > 0; i--) {
+            if (!( arr.contains(book.get(i).getName()))){
+                if (book.get(i).getEst() == 5){
+                    cntFives += 1;
                 }
-                arr.add(book.get(i).getName());
+                if (book.get(i).getEst() == 3){
+                    return false;
+                }
             }
+            all ++;
+            arr.add(book.get(i).getName());
         }
 
-        double excellentPercentage = (double) all / cnt * 100;
-
+        double excellentPercentage = (double) cntFives / all * 100;
         return excellentPercentage >= 75 && (finalGrade == 5);
     }
 

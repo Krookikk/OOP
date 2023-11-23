@@ -1,6 +1,7 @@
 package org.example;
 
-public class Grade {
+
+public class Grade implements Comparable<Grade> {
     private String name;
     private int sem;
     private int est;
@@ -23,5 +24,10 @@ public class Grade {
         this.name = nameValue;
         this.sem = semValue;
         this.est = estValue;
+    }
+
+    @Override
+    public int compareTo(Grade otherGrade) {
+        return Integer.compare(this.sem, otherGrade.sem);
     }
 }

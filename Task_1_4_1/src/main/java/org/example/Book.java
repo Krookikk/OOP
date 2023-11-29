@@ -52,6 +52,7 @@ public class Book {
 
         for (int i = book.size() - 1; i > 0; i--) {
             if (!( arr.contains(book.get(i).getName()))){
+                arr.add(book.get(i).getName());
                 if (book.get(i).getEst() == 5){
                     cntFives += 1;
                 }
@@ -60,7 +61,6 @@ public class Book {
                 }
             }
             all ++;
-            arr.add(book.get(i).getName());
         }
 
         double excellentPercentage = (double) cntFives / all * 100;
@@ -70,19 +70,20 @@ public class Book {
     public Boolean incStipend(int sem) {
         Collections.sort(book);
 
-        int i = 0;
+        int i = 0, n = 0;
         if (sem < book.get(i).getSem()) {
             return false;
         }
         while (i < book.size() && sem >= book.get(i).getSem()) {
             if (book.get(i).getSem() == sem) {
+                n = 1;
                 if (book.get(i).getEst() != 5) {
                     return false;
                 }
             }
             i ++;
         }
-        return true;
+        return n == 1;
     }
 
     public Integer size() {

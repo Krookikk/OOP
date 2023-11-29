@@ -33,7 +33,7 @@ public class FindStrTest {
     public void testJapan() throws IOException {
         var fileName = "example.txt";
         var subStr = "ツ";
-        List<Long> a = Arrays.asList(22L, 27L);
+        List<Long> a = Arrays.asList(22L, 27L); 
         assertEquals(a, FindStr.find(fileName, subStr));
     }
 

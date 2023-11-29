@@ -25,7 +25,7 @@ public class FindStrTest {
     public void testRu() throws IOException {
         var fileName = "example.txt";
         var subStr = "аб";
-        List<Long> a = Arrays.asList(13L, 15L, 17L);
+        List<Long> a = Arrays.asList(12L, 14L, 16L);
         assertEquals(a, FindStr.find(fileName, subStr));
     }
 
@@ -33,7 +33,7 @@ public class FindStrTest {
     public void testJapan() throws IOException {
         var fileName = "example.txt";
         var subStr = "ツ";
-        List<Long> a = Arrays.asList(24L, 29L);
+        List<Long> a = Arrays.asList(22L, 27L);
         assertEquals(a, FindStr.find(fileName, subStr));
     }
 

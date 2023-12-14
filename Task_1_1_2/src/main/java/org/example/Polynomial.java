@@ -181,7 +181,7 @@ public class Polynomial {
                 }
             }
         }
-        if (ans.isEmpty()) {
+        if (ans.length() == 0) {
             return ans.append("0").toString();
         }
         return ans.toString();

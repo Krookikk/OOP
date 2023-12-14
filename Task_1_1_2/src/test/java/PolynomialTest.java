@@ -11,7 +11,7 @@ public class PolynomialTest {
         var n1 = new Polynomial(new int[] {-1, 1, 0, 3, 4});
         var n2 = new Polynomial(new int[] {3, 0, 0, 1});
         var answer = new Polynomial(new int[] {2, 1, 0, 4, 4});
-        assertArrayEquals(answer.mas, n1.plus(n2).mas);
+        assertArrayEquals(answer.getMas(), n1.plus(n2).getMas());
     }
 
     @Test
@@ -19,7 +19,7 @@ public class PolynomialTest {
         var n1 = new Polynomial(new int[] {-1, 1, 0, 3, 4});
         var n2 = new Polynomial(new int[] {3, 0, 0, 1});
         var answer = new Polynomial(new int[] {-4, 1, 0, 2, 4});
-        assertArrayEquals(answer.mas, n1.minus(n2).mas);
+        assertArrayEquals(answer.getMas(), n1.minus(n2).getMas());
     }
 
     @Test
@@ -27,7 +27,8 @@ public class PolynomialTest {
         var n1 = new Polynomial(new int[] {2, 5});
         var n2 = new Polynomial(new int[] {3, 0, 0, 1});
         var answer = new Polynomial(new int[] {6, 15, 0, 2, 5});
-        assertArrayEquals(answer.mas, n1.mul(n2).mas);
+        assertEquals(answer.toString(), n1.mul(n2).toString());
+
     }
 
     @Test
@@ -41,21 +42,21 @@ public class PolynomialTest {
     public void test5() {
         var n1 = new Polynomial(new int[] {2, 3, 4, -3});
         var answer = new Polynomial((new int[] {3, 8, -9}));
-        assertArrayEquals(answer.mas, n1.diff(1).mas);
+        assertEquals(answer.toString(), n1.diff(1).toString());
     }
 
     @Test
     public void test5_2() {
         var n1 = new Polynomial(new int[] {2, 3, 4, -3});
         var answer = new Polynomial(new int[] {8, -18});
-        assertArrayEquals(answer.mas, n1.diff(2).mas);
+        assertEquals(answer.toString(), n1.diff(2).toString());
     }
 
     @Test
     public void test6() {
         var n1 = new Polynomial(new int[] {2, 3, 4, -3});
         var answer = new Polynomial(new int[] {2, 3, 4, -3});
-        assert(n1.equal(answer));
+        assert(n1.equals(answer));
     }
 
     @Test

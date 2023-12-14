@@ -1,10 +1,13 @@
 package org.example;
 
-import java.util.Arrays;
-
 
 public class Polynomial {
-    public int[] mas;
+
+
+    private int[] mas;
+    public int[] getMas() {
+        return mas;
+    }
     public Polynomial(final int[] list) {
         mas = new int[list.length];
         System.arraycopy(list, 0, mas, 0, list.length);
@@ -56,7 +59,7 @@ public class Polynomial {
      * @return возвращает произведение
      */
     public Polynomial mul(final Polynomial a) { //умножение
-        var arr = new Polynomial(new int[this.mas.length + a.mas.length - 1]);
+        var arr = new Polynomial(new int[this.mas.length + a.mas.length]);
         for (int i = 0; i < this.mas.length; i++) {
             for (int j = 0; j < a.mas.length; j++) {
                 arr.mas[i + j] += this.mas[i] * a.mas[j];
@@ -92,49 +95,96 @@ public class Polynomial {
             arr.mas[arr.mas.length - 1] = 0;
 
         }
-        var answer = new Polynomial(new int[arr.mas.length - a]);
-        System.arraycopy(arr.mas, 0, answer.mas, 0, arr.mas.length - a);
-        return answer;
+        return arr;
     }
 
-    /** равенство многочленов.
-     *
-     * @param a - второй многочлен
-     * @return возвращает truo or false -если равны или нет
-     */
-    public Boolean equal(final Polynomial a) { //равенство
-        Boolean ans = Arrays.equals(a.mas, this.mas);
-        return ans;
-    }
-    /** строковое представление.
-     * @return строковое представление многочлена
-     */
-    public String toString() { //строковое представление
-        String ans = new String();
-        for (int i = this.mas.length - 1; i >= 0; i--) {
-            if (i == this.mas.length - 1 && this.mas[i] < 0) {
-                ans += "- ";
-            } else if (this.mas[i] < 0) {
-                ans += " - ";
-            }
-            if (this.mas[i] > 0 && i != this.mas.length - 1) {
-                ans += " + ";
-            }
-            if (i == 0 && this.mas[i] != 0) {
-                ans += Math.abs(this.mas[i]);
-            } else if (i == 1 && this.mas[i] != 0) {
-                if (this.mas[i] == 1 || this.mas[i] == -1) {
-                    ans += "x";
-                } else {
-                    ans += Math.abs(this.mas[i]) + "x";
-                }
-            } else if (this.mas[i] == 1 || this.mas[i] == -1) {
-                ans += "x^" + i;
-            } else if (this.mas[i] != 0) {
-                ans += Math.abs(this.mas[i]) + "x^" + i;
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Polynomial a = (Polynomial) obj;
+
+        if (this.mas.length != a.mas.length) {
+            return false;
+        }
+
+        for (int i = 0; i < a.mas.length; i ++) {
+            if (this.mas[i] != a.mas[i]) {
+                return false;
             }
         }
-        return ans;
+        return true;
+    }
+    /**
+     * строковое представление.
+     *
+     * @return строковое представление многочлена
+     */
+
+
+    @Override
+    public String toString() {
+        StringBuilder ans = new StringBuilder();
+        var n = true;
+        for (int i = this.mas.length - 1; i >= 0; i--) {
+            if (this.mas[i] != 0) { //нулевые значения игнорируем
+                if (n) { // для первого значения
+                    n = false;
+                    if (this.mas[i] < 0) { //отрицательное
+                        ans.append("- ");
+                        ans.append(Math.abs(this.mas[i])); // для нулевого индекса
+                        if (i == 1) { // и тд
+                            ans.append("x");
+                        }
+                        if (i > 1) {
+                            ans.append("x^").append(i);
+                        }
+                    }
+
+                    else { //положит
+                        ans.append(this.mas[i]);
+                        if (i == 1) {
+                            ans.append("x");
+                        }
+                        if (i > 1) {
+                            ans.append("x^").append(i);
+                        }
+                    }
+                }
+                else { //тоже самое для остальных чисел
+                    if (this.mas[i] < 0) {
+                        ans.append(" - ");
+                        ans.append(Math.abs(this.mas[i]));
+                        if (i == 1) {
+                            ans.append("x");
+                        }
+                        if (i > 1) {
+                            ans.append("x^").append(i);
+                        }
+                    }
+                    else {
+                        ans.append(" + ");
+                        ans.append(this.mas[i]);
+                        if (i == 1) {
+                            ans.append("x");
+                        }
+                        if (i > 1) {
+                            ans.append("x^").append(i);
+                        }
+
+                    }
+                }
+            }
+        }
+        if (ans.isEmpty()) {
+            return ans.append("0").toString();
+        }
+        return ans.toString();
     }
 
 }

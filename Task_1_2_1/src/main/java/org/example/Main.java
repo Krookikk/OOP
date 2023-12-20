@@ -12,5 +12,7 @@ public class Main {
         var a = tree.addChild("A");
         var b = a.addChild("B");
         b.addChild("J");
+        var arr = new DfsIterator<String>(tree);
+        System.out.println(tree.searchElem("J"));
     }
 }

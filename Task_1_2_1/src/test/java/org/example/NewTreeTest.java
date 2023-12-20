@@ -103,4 +103,14 @@ public class NewTreeTest {
         assertEquals(4, tree1.getChildren().size());
     }
 
+    @Test
+    public void testSearchStream() throws CreateNullNodeException {
+        NewTree<String> tree = new NewTree<>("R1");
+        var a = tree.addChild("A");
+        var b = a.addChild("B");
+        b.addChild("J");
+        var arr = new DfsIterator<String>(tree);
+        assertTrue(tree.searchElem("J"));
+    }
+
 }

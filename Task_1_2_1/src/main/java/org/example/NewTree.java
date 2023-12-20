@@ -1,8 +1,8 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /** класс.
  *
@@ -141,6 +141,17 @@ public class NewTree<Type1> implements Iterable<NewTree<Type1>> {
         int cnt = this.children.size() - 1;
         str.append(this.children.get(cnt).rootData.toString());
         return str.toString();
+    }
+
+    public Stream<NewTree<Type1>> searchStream() {
+        Spliterator<NewTree<Type1>> spliterator = Spliterators.spliterator(iterator(), count,
+                Spliterator.IMMUTABLE | Spliterator.SIZED
+        );
+        return StreamSupport.stream(spliterator, false);
+    }
+
+    public Boolean searchElem(Type1 elem) {
+        return searchStream().anyMatch(nodeData -> nodeData.rootData.equals(elem));
     }
 
     @Override

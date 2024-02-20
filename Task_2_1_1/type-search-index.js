@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"Graph"},{"p":"org.example","l":"Main"},{"p":"org.example","l":"SearchingNonPrimeNumbers"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"DataForGraph"},{"p":"org.example","l":"Graph"},{"p":"org.example","l":"Main"},{"p":"org.example","l":"SearchingNonPrimeNumbers"}]

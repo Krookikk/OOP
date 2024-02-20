@@ -14,7 +14,7 @@ public class SearchingNonPrimeNumbersTest {
     }
 
     @Test
-    public void test_hasNonPrimeSequential() {
+    public void test_hasNonPrimeSequentialFalse() {
         int[] numbers = {20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
         boolean a1 = SearchingNonPrimeNumbers.hasNonPrimeSequential(numbers);
@@ -22,7 +22,15 @@ public class SearchingNonPrimeNumbersTest {
     }
 
     @Test
-    public void test_hasNonPrimeParallel() {
+    public void test_hasNonPrimeSequentialTrue() {
+        int[] numbers = Graph.generatePrimes(1000);
+        boolean a1 = SearchingNonPrimeNumbers.hasNonPrimeSequential(numbers);
+        assertTrue(a1);
+    }
+
+
+    @Test
+    public void test_hasNonPrimeParallelFalse() {
         int[] numbers = {20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
         boolean a1 = SearchingNonPrimeNumbers.hasNonPrimeParallel(numbers, 4);
@@ -30,11 +38,24 @@ public class SearchingNonPrimeNumbersTest {
     }
 
     @Test
-    public void test_hasNonPrimeParallelStream() {
+    public void test_hasNonPrimeParallelTrue() {
+        int[] numbers = Graph.generatePrimes(1000);
+        boolean a1 = SearchingNonPrimeNumbers.hasNonPrimeParallel(numbers, 4);
+        assertTrue(a1);
+    }
+
+    @Test
+    public void test_hasNonPrimeParallelStreamFalse() {
         int[] numbers = {20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
-        boolean a1 = SearchingNonPrimeNumbers.hasNonPrimeParallelStream(numbers);
+        boolean a1 = SearchingNonPrimeNumbers.hasNonPrimeParallelStream(numbers, 1);
         assertFalse(a1);
     }
 
+    @Test
+    public void test_hasNonPrimeParallelStreamTrue() {
+        int[] numbers = Graph.generatePrimes(1000);
+        boolean a1 = SearchingNonPrimeNumbers.hasNonPrimeParallelStream(numbers, 1);
+        assertTrue(a1);
+    }
 }

@@ -13,27 +13,40 @@ public class SearchingNonPrimeNumbers {
         return false;
     }
 
-    public static boolean hasNonPrimeParallel(int[] numbers, int numThreads) {
-        AtomicBoolean hasNonPrime = new AtomicBoolean(false);
+    private static Thread[] createThreads(int[] numbers, int numThreads, AtomicBoolean hasNonPrime) {
+        int blockSize = numbers.length / numThreads;
         Thread[] threads = new Thread[numThreads];
 
-        int blockSize = numbers.length / numThreads;
         for (int i = 0; i < numThreads; i++) {
             int start = i * blockSize;
             int end = (i == numThreads - 1) ? numbers.length : (i + 1) * blockSize;
             // blockSize >= последний промежуток < 2*blockSize
 
-            threads[i] = new Thread(() -> {
-                for (int j = start; j < end; j++) {
-                    if (!isPrime(numbers[j]) || hasNonPrime.get()) {
-                        hasNonPrime.set(true);
-                        break;
-                    }
-                }
-            });
-            threads[i].start();
+            threads[i] = createThread(start, end, hasNonPrime, numbers);
         }
+        return threads;
+    }
 
+    private static Thread createThread(int start, int end, AtomicBoolean hasNonPrime, int[] numbers) {
+        Thread thread = new Thread(() -> {
+            for (int j = start; j < end; j++) {
+                if (!isPrime(numbers[j]) || hasNonPrime.get()) {
+                    hasNonPrime.set(true);
+                    break;
+                }
+            }
+        });
+        return thread;
+    }
+
+
+    private static void startThreads(Thread[] threads) {
+        for (Thread i : threads) {
+            i.start();
+        }
+    }
+
+    private static void waitThreads(Thread[] threads) {
         for (Thread i : threads) {
             try {
                 i.join();
@@ -41,12 +54,30 @@ public class SearchingNonPrimeNumbers {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static boolean hasNonPrimeParallel(int[] numbers, int numThreads) {
+        if (numThreads < 1) {
+            numThreads = 1;
+        }
+
+        AtomicBoolean hasNonPrime = new AtomicBoolean(false);
+        Thread[] threads = createThreads(numbers, numThreads, hasNonPrime);
+
+        startThreads(threads);
+        waitThreads(threads);
+
         return hasNonPrime.get();
     }
 
-    public static boolean hasNonPrimeParallelStream(int[] numbers) {
+    public static boolean hasNonPrimeParallelStream(int[] numbers, int numThreads) {
+        if (numThreads < 1) {
+            numThreads = 1;
+        }
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", Integer.toString(numThreads));
         return Arrays.stream(numbers).parallel().anyMatch(n -> !isPrime(n));
     }
+
 
     // Проверка, является ли число простым
     public static boolean isPrime(int number) {

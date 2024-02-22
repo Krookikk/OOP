@@ -1,17 +1,8 @@
-package org.example;
+package org.example.hasnotprimecheck;
 
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SearchingNonPrimeNumbers {
-    public static boolean hasNonPrimeSequential(int[] numbers) {
-        for (int number : numbers) {
-            if (!isPrime(number)) {
-                return true;
-            }
-        }
-        return false;
-    }
+public class hasNonPrimeParallel extends SearchingNonPrimeNumbers {
 
     private static Thread[] createThreads(int[] numbers, int numThreads, AtomicBoolean hasNonPrime) {
         int blockSize = numbers.length / numThreads;
@@ -56,7 +47,7 @@ public class SearchingNonPrimeNumbers {
         }
     }
 
-    public static boolean hasNonPrimeParallel(int[] numbers, int numThreads) {
+    public boolean hasNonPrime(int[] numbers, int numThreads) {
         if (numThreads < 1) {
             numThreads = 1;
         }
@@ -68,27 +59,5 @@ public class SearchingNonPrimeNumbers {
         waitThreads(threads);
 
         return hasNonPrime.get();
-    }
-
-    public static boolean hasNonPrimeParallelStream(int[] numbers, int numThreads) {
-        if (numThreads < 1) {
-            numThreads = 1;
-        }
-        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", Integer.toString(numThreads));
-        return Arrays.stream(numbers).parallel().anyMatch(n -> !isPrime(n));
-    }
-
-
-    // Проверка, является ли число простым
-    public static boolean isPrime(int number) {
-        if (number <= 1) {
-            return false;
-        }
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }

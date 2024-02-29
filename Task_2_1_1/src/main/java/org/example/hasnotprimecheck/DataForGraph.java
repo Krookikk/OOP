@@ -30,17 +30,31 @@ public class DataForGraph {
         return s2;
     }
 
-    public static XYSeries ParallelStream(int[] array) {
-        XYSeries s3 = new XYSeries("ParallelStream");
-        long start = System.currentTimeMillis();
-        var b1 = new hasNonPrimeParallelStream();
-        b1.hasNonPrime(array, 3);
-        long end = System.currentTimeMillis();
+//    public static XYSeries ParallelStream(int[] array) {
+//        XYSeries s3 = new XYSeries("ParallelStream");
+//        long start = System.currentTimeMillis();
+//        var b1 = new hasNonPrimeParallelStream();
+//        b1.hasNonPrime(array, 3);
+//        long end = System.currentTimeMillis();
+//
+//        s3.add(1, end - start);
+//        s3.add(4, end - start);
+//
+//        return s3;
+//    }
 
-        s3.add(1, end - start);
-        s3.add(4, end - start);
+    public static XYSeries ParallelStream(int[] array) {
+
+        long start, end;
+        XYSeries s3 = new XYSeries("ParallelStream");
+        var b1 = new hasNonPrimeParallelStream();
+        for (int i = 1; i < 5; i++) {
+            start = System.currentTimeMillis();
+            b1.hasNonPrime(array, i);
+            end = System.currentTimeMillis();
+            s3.add(i, end - start);
+        }
 
         return s3;
     }
-    
 }

@@ -1,7 +1,7 @@
 package org.example.hasnotprimecheck;
 
 abstract class SearchingNonPrimeNumbers {
-    
+
     // Проверка, является ли число простым
     public static boolean isPrime(int number) {
         if (number <= 1) {

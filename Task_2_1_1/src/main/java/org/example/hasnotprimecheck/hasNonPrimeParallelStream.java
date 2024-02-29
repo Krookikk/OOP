@@ -10,6 +10,8 @@ public class hasNonPrimeParallelStream extends SearchingNonPrimeNumbers {
             numThreads = 1;
         }
         System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", Integer.toString(numThreads));
-        return Arrays.stream(numbers).parallel().anyMatch(n -> !isPrime(n));
+        boolean a = Arrays.stream(numbers).parallel().anyMatch(n -> !isPrime(n));
+        System.clearProperty("java.util.concurrent.ForkJoinPool.common.parallelism");
+        return a;
     }
 }

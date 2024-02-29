@@ -36,9 +36,11 @@ public class DataForGraph {
         var b1 = new hasNonPrimeParallelStream();
         b1.hasNonPrime(array, 3);
         long end = System.currentTimeMillis();
+
         s3.add(1, end - start);
         s3.add(4, end - start);
 
         return s3;
     }
+    
 }

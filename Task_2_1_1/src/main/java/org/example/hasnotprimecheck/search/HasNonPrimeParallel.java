@@ -1,8 +1,14 @@
-package org.example.hasnotprimecheck;
+package org.example.hasnotprimecheck.search;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class hasNonPrimeParallel extends SearchingNonPrimeNumbers {
+public class HasNonPrimeParallel extends SearchingNonPrimeNumbers {
+    int numThreads;
+    int[] numbers;
+    public HasNonPrimeParallel(int[] numbers, int numThreads) {
+        this.numbers = numbers;
+        this.numThreads = numThreads;
+    }
 
     private static Thread[] createThreads(int[] numbers, int numThreads, AtomicBoolean hasNonPrime) {
         int blockSize = numbers.length / numThreads;
@@ -13,21 +19,9 @@ public class hasNonPrimeParallel extends SearchingNonPrimeNumbers {
             int end = (i == numThreads - 1) ? numbers.length : (i + 1) * blockSize;
             // blockSize >= последний промежуток < 2*blockSize
 
-            threads[i] = createThread(start, end, hasNonPrime, numbers);
+            threads[i] = new HasNonPrimeCreateThread(start, end, hasNonPrime, numbers);
         }
         return threads;
-    }
-
-    private static Thread createThread(int start, int end, AtomicBoolean hasNonPrime, int[] numbers) {
-        Thread thread = new Thread(() -> {
-            for (int j = start; j < end; j++) {
-                if (!isPrime(numbers[j]) || hasNonPrime.get()) {
-                    hasNonPrime.set(true);
-                    break;
-                }
-            }
-        });
-        return thread;
     }
 
 
@@ -47,7 +41,8 @@ public class hasNonPrimeParallel extends SearchingNonPrimeNumbers {
         }
     }
 
-    public boolean hasNonPrime(int[] numbers, int numThreads) {
+    @Override
+    public boolean hasNonPrime() {
         if (numThreads < 1) {
             numThreads = 1;
         }

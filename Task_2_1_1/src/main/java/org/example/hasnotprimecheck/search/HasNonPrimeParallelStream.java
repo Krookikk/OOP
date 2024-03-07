@@ -1,11 +1,17 @@
-package org.example.hasnotprimecheck;
+package org.example.hasnotprimecheck.search;
 
 import java.util.Arrays;
 
-public class hasNonPrimeParallelStream extends SearchingNonPrimeNumbers {
+public class HasNonPrimeParallelStream extends SearchingNonPrimeNumbers {
+    int numThreads;
+    int[] numbers;
+    public HasNonPrimeParallelStream(int[] numbers, int numThreads) {
+        this.numbers = numbers;
+        this.numThreads = numThreads;
+    }
 
     @Override
-    public boolean hasNonPrime(int[] numbers, int numThreads) {
+    public boolean hasNonPrime() {
         if (numThreads < 1) {
             numThreads = 1;
         }

@@ -1,5 +1,6 @@
-package org.example.hasnotprimecheck;
+package org.example.hasnotprimecheck.graph;
 
+import org.example.hasnotprimecheck.search.SearchingNonPrimeNumbers;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;

@@ -1,6 +1,6 @@
-package org.example.hasnotprimecheck;
+package org.example.hasnotprimecheck.search;
 
-abstract class SearchingNonPrimeNumbers {
+public abstract class SearchingNonPrimeNumbers {
 
     // Проверка, является ли число простым
     public static boolean isPrime(int number) {
@@ -15,5 +15,5 @@ abstract class SearchingNonPrimeNumbers {
         return true;
     }
 
-    public abstract boolean hasNonPrime(int[] numbers, int numThreads);
+    public abstract boolean hasNonPrime();
 }

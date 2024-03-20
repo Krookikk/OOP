@@ -1,16 +1,17 @@
 package org.example;
 
 import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Baker extends Thread {
-    int countTime, countWarehouse, order;
-    final BackersNum count;
-    long endWork;
-    Queue<Integer> queueOrder, queueWarehouse;
+    private int countTime, countWarehouse, order;
+    private AtomicInteger count;
+    private long endWork;
+    private Queue<Integer> queueOrder, queueWarehouse;
 
 
     public Baker(int countTime, Queue<Integer> queueOrder, Queue<Integer> queueWarehouse, int countWarehouse,
-                 long endWork, BackersNum count) {
+                 long endWork, AtomicInteger count) {
         this.countTime = countTime;
         this.queueOrder = queueOrder;
         this.queueWarehouse = queueWarehouse;
@@ -65,10 +66,8 @@ public class Baker extends Thread {
                 }
             }
 
+        }
+        count.decrementAndGet();
 
-        }
-        synchronized (count) {
-            count.dec();
-        }
     }
 }

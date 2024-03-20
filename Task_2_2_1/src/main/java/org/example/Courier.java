@@ -1,15 +1,16 @@
 package org.example;
 
 import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Courier extends Thread {
-    int countTime, countWarehouse, order, maxCountOrder, countOrder;
-    BackersNum count;
-    long endWork;
-    Queue<Integer> queueWarehouse;
+    private int countTime, countWarehouse, order, maxCountOrder, countOrder;
+    private AtomicInteger count;
+    private long endWork;
+    private Queue<Integer> queueWarehouse;
 
     public Courier(int countTime, Queue<Integer> queueWarehouse, int countWarehouse, int maxCountOrder,
-                   long endWork, BackersNum count) {
+                   long endWork, AtomicInteger count) {
         this.countTime = countTime;
         this.queueWarehouse = queueWarehouse;
         this.countWarehouse = countWarehouse;
@@ -32,7 +33,7 @@ public class Courier extends Thread {
 
             try {
                 if (countOrder == 0) {
-                    if (System.currentTimeMillis() >= endWork && count.getCount() == 0) {
+                    if (System.currentTimeMillis() >= endWork && count.get() == 0) {
                         break;
                     }
                     Thread.sleep(50);

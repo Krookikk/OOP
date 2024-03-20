@@ -1,0 +1,28 @@
+{
+  "durationWork": 1000,
+  "countWarehouse": 4,
+
+  "bakers": [
+    {
+      "countTime": 400
+    },
+    {
+      "countTime": 300
+    },
+    {
+      "countTime": 500
+    }
+  ],
+
+  "couriers": [
+    {
+      "countTime": 800,
+      "maxCountOrder": 3
+    },
+    {
+      "countTime": 600,
+      "maxCountOrder": 2
+    }
+  ]
+
+}

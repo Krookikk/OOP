@@ -1,4 +1,4 @@
-package org.example;
+package org.example.json;
 
 public class PizzaJson {
 
@@ -7,6 +7,15 @@ public class PizzaJson {
 
     private BakerJson[] bakers;
     private CourierJson[] couriers;
+    private OrderJson[] orders;
+
+    public OrderJson[] getOrders() {
+        return orders;
+    }
+
+    public void setOrders(OrderJson[] orders) {
+        this.orders = orders;
+    }
 
     public BakerJson[] getBakers() {
         return bakers;

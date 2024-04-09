@@ -4,12 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a120c2ec-d4de-4e2f-8567-d4e106391875" name="Changes" comment="">
+    <list default="true" id="2245ff56-e42a-4fbd-94ab-19f2d6a6a539" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/start/Pizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Baker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Courier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BackersNum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Baker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Baker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Courier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Pizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Baker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BakerJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/json/BakerJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Courier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CourierJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/json/CourierJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pizza.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PizzaJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/json/PizzaJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pizza.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pizza.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,33 +33,14 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 2
+  &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2ddVJNyT0q18J0vBUwmbHLPUC5K" />
+  <component name="ProjectId" id="2esZ0db9yfGAYCgrYGRKz32igyh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -56,38 +49,18 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Task__2__2__1",
-    "last_opened_file_path": "C:/Users/77144/OneDrive/Документы/GitHub/OOP/Task_2_2_1/settings.gradle.kts"
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "Task__2__2__1"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\77144\OneDrive\Документы\GitHub\OOP\Task_2_2_1\src\main\resources" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Task_2_2_1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Task_2_2_1" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a120c2ec-d4de-4e2f-8567-d4e106391875" name="Changes" comment="" />
-      <created>1710337869511</created>
+      <changelist id="2245ff56-e42a-4fbd-94ab-19f2d6a6a539" name="Changes" comment="" />
+      <created>1712695026789</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1710337869511</updated>
+      <updated>1712695026789</updated>
     </task>
     <servers />
   </component>

@@ -1,28 +1,46 @@
 {
-  "durationWork": 1000,
-  "countWarehouse": 4,
-
-  "bakers": [
+  "durationWork" : 100,
+  "countWarehouse" : 5,
+  "bakers" : [ {
+    "countTime" : 400
+  }, {
+    "countTime" : 300
+  }, {
+    "countTime" : 500
+  } ],
+  "couriers" : [ {
+    "countTime" : 200,
+    "maxCountOrder" : 3
+  }, {
+    "countTime" : 600,
+    "maxCountOrder" : 3
+  }, {
+    "countTime" : 500,
+    "maxCountOrder" : 3
+  }, {
+    "countTime" : 400,
+    "maxCountOrder" : 3
+  } ],
+  "orders" : [
     {
-      "countTime": 400
+      "number": 1,
+      "percentB": 0,
+      "percentC": 0
     },
     {
-      "countTime": 300
+      "number": 2,
+      "percentB": 0,
+      "percentC": 0
     },
     {
-      "countTime": 500
-    }
-  ],
-
-  "couriers": [
-    {
-      "countTime": 800,
-      "maxCountOrder": 3
+      "number": 3,
+      "percentB": 0,
+      "percentC": 0
     },
     {
-      "countTime": 600,
-      "maxCountOrder": 2
+      "number": 4,
+      "percentB": 0,
+      "percentC": 0
     }
   ]
-
 }

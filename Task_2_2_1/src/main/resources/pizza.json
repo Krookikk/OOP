@@ -21,26 +21,25 @@
     "countTime" : 400,
     "maxCountOrder" : 3
   } ],
-  "orders" : [
-    {
-      "number": 1,
-      "percentB": 0,
-      "percentC": 0
-    },
-    {
-      "number": 2,
-      "percentB": 0,
-      "percentC": 0
-    },
-    {
-      "number": 3,
-      "percentB": 0,
-      "percentC": 0
-    },
-    {
-      "number": 4,
-      "percentB": 0,
-      "percentC": 0
-    }
-  ]
+  "orders" : [ {
+    "number" : 4,
+    "percentB" : 0,
+    "percentC" : 0
+  }, {
+    "number" : 5,
+    "percentB" : 0,
+    "percentC" : 0
+  }, {
+    "number" : 3,
+    "percentB" : 22,
+    "percentC" : 0
+  }, {
+    "number" : 1,
+    "percentB" : 27,
+    "percentC" : 0
+  }, {
+    "number" : 2,
+    "percentB" : 37,
+    "percentC" : 0
+  } ]
 }

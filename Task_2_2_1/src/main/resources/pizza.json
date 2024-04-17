@@ -26,20 +26,16 @@
     "percentB" : 0,
     "percentC" : 0
   }, {
-    "number" : 5,
+    "number" : 3,
     "percentB" : 0,
     "percentC" : 0
   }, {
-    "number" : 3,
-    "percentB" : 22,
-    "percentC" : 0
-  }, {
     "number" : 1,
-    "percentB" : 27,
+    "percentB" : 0,
     "percentC" : 0
   }, {
     "number" : 2,
-    "percentB" : 37,
+    "percentB" : 0,
     "percentC" : 0
   } ]
 }

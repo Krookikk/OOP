@@ -30,4 +30,32 @@ public class CourierTest {
         assertEquals(queueOrder.size(), 0);
         assertEquals(queueWarehouse.size(), 0);
     }
+
+    @Test
+    public void test_Courier2() throws InterruptedException {
+        MyBlockingQueue queueOrder = new MyBlockingQueue();
+        MyBlockingQueue queueWarehouse = new MyBlockingQueue(2);
+        queueOrder.add(new Order(4, 0, 0));
+        queueOrder.add(new Order(5, 0, 0));
+        queueOrder.add(new Order(6, 0, 0));
+        queueOrder.add(new Order(7, 0, 0));
+        int countTimeB = 100;
+        int countTimeC = 150;
+        int maxCountOrder = 2;
+        Baker a1 = new Baker(countTimeB, queueOrder, queueWarehouse);
+        Baker a2 = new Baker(countTimeB, queueOrder, queueWarehouse);
+        Courier b = new Courier(countTimeC, queueWarehouse, maxCountOrder, queueOrder);
+        a1.start();
+        a2.start();
+        b.start();
+        Thread.sleep(250);
+        a1.interrupt();
+        a2.interrupt();
+        b.interrupt();
+        a1.join();
+        a2.join();
+        b.join();
+        assertEquals(queueOrder.size(), 2);
+        assertEquals(queueWarehouse.size(), 2);
+    }
 }

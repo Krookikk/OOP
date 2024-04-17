@@ -30,10 +30,10 @@ public class BakerTest {
     public void test_baker2() throws InterruptedException {
         MyBlockingQueue queueOrder = new MyBlockingQueue();
         MyBlockingQueue queueWarehouse = new MyBlockingQueue(10);
-        queueOrder.add(new Order(1, 0, 0));
-        queueOrder.add(new Order(2, 0, 0));
         queueOrder.add(new Order(3, 0, 0));
         queueOrder.add(new Order(4, 0, 0));
+        queueOrder.add(new Order(5, 0, 0));
+        queueOrder.add(new Order(6, 0, 0));
         int countTime = 100;
 
         var arrBaker = new ArrayList<Baker>();

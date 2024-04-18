@@ -37,6 +37,56 @@ public class Pizza extends Thread {
         this.objectMapper = objectMapper;
     }
 
+
+    private void serialization() {
+        int sizeOrder = queueOrder.size();
+        int size =  queueOrder.size() + queueWarehouse.size();
+        OrderJson[] arr = new OrderJson[size];
+        for (int i = 0; i < size; i ++) {
+            Order a;
+            try {
+                arr[i] = new OrderJson();
+                if (i < sizeOrder) {
+                    a = queueOrder.poll();
+                } else {
+                    a = queueWarehouse.poll();
+                }
+                arr[i].setNumber(a.getNumber());
+                arr[i].setPercentB(a.getPercentB());
+                arr[i].setPercentC(a.getPercentC());
+                userLogger.info(a.getNumber() + " " + a.getPercentB() + " " + a.getPercentC());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        config.setOrders(arr);
+        ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
+        try {
+            objectWriter.writeValue(new File("src/main/resources/pizza.json"), config);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void joinThreads(ArrayList<Baker> arrBaker, ArrayList<Courier> arrCourier) {
+        for (Baker a : arrBaker) {
+            try {
+                a.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        for (Courier a : arrCourier) {
+            try {
+                a.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public void run() {
 
@@ -54,6 +104,7 @@ public class Pizza extends Thread {
             arrCourier.add(a);
             a.start();
         }
+
         try {
             Thread.sleep(durationWork);
         } catch (InterruptedException e) {
@@ -67,44 +118,9 @@ public class Pizza extends Thread {
             a.interrupt();
         }
 
-        for (Baker a : arrBaker) {
-            try {
-                a.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        joinThreads(arrBaker, arrCourier);
 
-        for (Courier a : arrCourier) {
-            try {
-                a.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        serialization();
 
-        int size =  queueOrder.size();
-        OrderJson[] arr = new OrderJson[size];
-        for (int i = 0; i < size; i ++) {
-            Order a;
-            try {
-                arr[i] = new OrderJson();
-                a = queueOrder.poll();
-                arr[i].setNumber(a.getNumber());
-                arr[i].setPercentB(a.getPercentB());
-                arr[i].setPercentC(a.getPercentC());
-                userLogger.info(a.getNumber() + " " + a.getPercentB() + " " + a.getPercentC());
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        config.setOrders(arr);
-        ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
-        try {
-            objectWriter.writeValue(new File("src/main/resources/pizza.json"), config);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

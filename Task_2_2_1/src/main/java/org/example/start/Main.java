@@ -40,7 +40,7 @@ public class Main {
 
         Pizza a = new Pizza(durationWork, queueOrder, queueWarehouse, bakers, couriers, config, objectMapper);
         a.start();
-        queueOrder.add(new Order(5, 0, 0));
+        //queueOrder.add(new Order(5, 0, 0));
 
 
     }

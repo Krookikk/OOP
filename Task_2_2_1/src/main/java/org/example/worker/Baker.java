@@ -18,38 +18,40 @@ public class Baker extends Thread {
         this.queueWarehouse = queueWarehouse;
     }
 
+    private void cookingOrder() {
+        long time = 0;
+        try {
+            userLogger.info("Order " + order.getNumber() + "  is being prepared.");
+            time = System.currentTimeMillis();
+            Thread.sleep((long) countTime * (100 - order.getPercentB()) / 100);
+            order.setPercentB(100);
+            userLogger.info("Order " + order.getNumber() + "  is ready.");
+        } catch (InterruptedException e) {
+            time = System.currentTimeMillis() - time;
+            order.setPercentB((int) ((time * 100) / countTime) + order.getPercentB());
+            try {
+                queueOrder.add(order);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+            interrupt();
+        }
+    }
+
     @Override
     public void run() {
         while (true) {
-            long time = 0;
-
             try {
                 order = queueOrder.poll();
             } catch (InterruptedException e) {
                 break;
             }
 
-            try {
-                userLogger.info("Order " + order.getNumber() + "  is being prepared.");
-                time = System.currentTimeMillis();
-                Thread.sleep((long) countTime * (100 - order.getPercentB()) / 100);
-
-                userLogger.info("Order " + order.getNumber() + "  is ready.");
-            } catch (InterruptedException e) {
-                time = System.currentTimeMillis() - time;
-                order.setPercentB((int) ((time * 100) / countTime) + order.getPercentB());
-                try {
-                    queueOrder.add(order);
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }
-                break;
-            }
+            cookingOrder();
 
             try {
                 queueWarehouse.add(order);
             } catch (InterruptedException e) {
-                order.setPercentB(100);
                 try {
                     queueOrder.add(order);
                 } catch (InterruptedException ex) {

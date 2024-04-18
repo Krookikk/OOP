@@ -22,20 +22,20 @@
     "maxCountOrder" : 0
   } ],
   "orders" : [ {
-    "number" : 1,
+    "number" : 4,
     "percentB" : 100,
-    "percentC" : 96
+    "percentC" : 98
   }, {
     "number" : 2,
     "percentB" : 100,
     "percentC" : 0
   }, {
-    "number" : 4,
-    "percentB" : 100,
-    "percentC" : 49
-  }, {
     "number" : 3,
     "percentB" : 100,
     "percentC" : 49
+  }, {
+    "number" : 1,
+    "percentB" : 100,
+    "percentC" : 96
   } ]
 }

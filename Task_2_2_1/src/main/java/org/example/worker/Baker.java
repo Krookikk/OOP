@@ -48,6 +48,9 @@ public class Baker extends Thread {
             }
 
             cookingOrder();
+            if (isInterrupted()) {
+                break;
+            }
 
             try {
                 queueWarehouse.add(order);

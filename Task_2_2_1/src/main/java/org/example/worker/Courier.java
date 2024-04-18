@@ -53,7 +53,7 @@ public class Courier extends Thread {
                 order = queueWarehouse.poll();
             } catch (InterruptedException e) {
                 courierInterrupted(queueOrder, orders);
-                return;
+                interrupt();
             }
             userLogger.info("Order " + order.getNumber() + "  from the courier.");
             countOrder ++;
@@ -84,12 +84,12 @@ public class Courier extends Thread {
             orders.clear();
             takeOrders();
 
-            if (countOrder != 0) {
+            if (countOrder != 0 && !isInterrupted()) {
                 deliveryOrders();
             }
 
-            if (Thread.currentThread().isInterrupted()) {
-                return;
+            if (isInterrupted()) {
+                break;
             }
         }
     }

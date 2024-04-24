@@ -51,8 +51,9 @@ public class BakerTest {
         for (Baker a : arrBaker) {
             a.join();
         }
-        System.out.println(queueWarehouse.size());
-        System.out.println(queueOrder.size());
+
+        assertEquals(queueWarehouse.size(), 2);
+        assertEquals(queueOrder.size(), 2);
     }
 
 

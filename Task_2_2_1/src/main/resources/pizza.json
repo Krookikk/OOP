@@ -1,0 +1,41 @@
+{
+  "durationWork" : 5000,
+  "countWarehouse" : 5,
+  "bakers" : [ {
+    "countTime" : 400
+  }, {
+    "countTime" : 300
+  }, {
+    "countTime" : 500
+  } ],
+  "couriers" : [ {
+    "countTime" : 10000,
+    "maxCountOrder" : 3
+  }, {
+    "countTime" : 600,
+    "maxCountOrder" : 0
+  }, {
+    "countTime" : 500,
+    "maxCountOrder" : 0
+  }, {
+    "countTime" : 400,
+    "maxCountOrder" : 0
+  } ],
+  "orders" : [ {
+    "number" : 4,
+    "percentB" : 100,
+    "percentC" : 98
+  }, {
+    "number" : 2,
+    "percentB" : 100,
+    "percentC" : 0
+  }, {
+    "number" : 3,
+    "percentB" : 100,
+    "percentC" : 49
+  }, {
+    "number" : 1,
+    "percentB" : 100,
+    "percentC" : 96
+  } ]
+}

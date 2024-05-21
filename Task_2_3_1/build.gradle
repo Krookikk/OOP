@@ -23,7 +23,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'org.example.snake'
-  mainClass = 'org.example.snake.HelloApplication'
+  mainClass = 'org.example.snake.Snake'
 }
 
 javafx {

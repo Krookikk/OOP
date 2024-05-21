@@ -1,39 +1,51 @@
 package org.example.snake;
 
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static org.example.snake.Snake.*;
 
 public class Game {
     private boolean gameOver;
-    private final int WIDTH;
-    private final int HEIGHT;
     private final int snakeL;
-    private static final int SPEED = 5;
-    private static final int TILE_SIZE = 20;
-    public static List<Position> foods;
+    private static final int SPEED = 4;
+    public static List<Game.Position> forRandom;
+    public static Type[][] elements;
+
+    public enum Type {
+        SNAKE, WALL, FOOD, BOT, NOTHING
+    }
     public static List<Position> snake;
     private final GraphicsContext gc;
     private final int foodT;
-
+    private final int wallT;
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
     }
     static Direction direction;
     private static boolean oneEvent = true;
 
-
-    public Game(GraphicsContext gc, int HEIGHT, int WIDTH, int foodT, int snakeL) {
+    public Game(GraphicsContext gc, int foodT, int snakeL, int wallT) {
         this.gc = gc;
-        this.HEIGHT = HEIGHT;
-        this.WIDTH = WIDTH;
         this.foodT = foodT;
         this.snakeL = snakeL;
+        this.wallT = wallT;
+    }
+
+    public static boolean isOneEvent() {
+        return oneEvent;
+    }
+    public static void setOneEvent(boolean oneEvent) {
+        Game.oneEvent = oneEvent;
+    }
+    public static Direction getDirection() {
+        return direction;
+    }
+    public static void setDirection(Direction direction) {
+        Game.direction = direction;
     }
 
     public static class Position {
@@ -57,69 +69,54 @@ public class Game {
         }
     }
 
-    public static Scene getScene(Canvas canvas) {
-        BorderPane root = new BorderPane(canvas);
-        Scene scene = new Scene(root);
-
-        scene.setOnKeyPressed(event -> {
-            if (oneEvent) { // чтобы змейка в противоположную сторону не полетела
-                if (event.getCode() == KeyCode.UP && direction != Direction.DOWN) {
-                    direction = Direction.UP;
-                    oneEvent = false;
-                } else if (event.getCode() == KeyCode.DOWN && direction != Direction.UP) {
-                    direction = Direction.DOWN;
-                    oneEvent = false;
-                } else if (event.getCode() == KeyCode.LEFT && direction != Direction.RIGHT) {
-                    direction = Direction.LEFT;
-                    oneEvent = false;
-                } else if (event.getCode() == KeyCode.RIGHT && direction != Direction.LEFT) {
-                    direction = Direction.RIGHT;
-                    oneEvent = false;
-                }
-            }
-        });
-        return scene;
-    }
-
     public void newGame() {
-        Position foodValue;
+        forRandom = new ArrayList<>();
+        elements = new Type[WIDTH / TILE_SIZE_X][HEIGHT / TILE_SIZE_Y];
         snake = new ArrayList<>();
-        foods = new ArrayList<>();
-        snake.add(new Position(WIDTH / 20 / 2 * 20, HEIGHT / 20 / 2 * 20)); // змейку на середину поля
-        for (int i = 0; i < foodT; i ++) { // генерим заданное кол-во еды
-            foodValue = Food.generateFoodPosition(WIDTH, HEIGHT, TILE_SIZE);
-            if (foods.contains(foodValue) || snake.contains(foodValue)) {
-                i --;
-                continue;
+
+        for (Type[] element : elements) {
+            Arrays.fill(element, Type.NOTHING);
+        }
+
+        for (int i = 0; i < elements.length; i ++) {
+            for (int j = 0; j < elements[i].length; j++) {
+                forRandom.add(new Position(i, j));
             }
-            foods.add(foodValue);
+        }
+
+        elements[WIDTH / TILE_SIZE_X / 2][HEIGHT / 2 / TILE_SIZE_Y] = Type.SNAKE; // змейку на середину поля
+        snake.add(new Position(WIDTH / 2 / TILE_SIZE_X, HEIGHT / 2 / TILE_SIZE_Y)); // змейку на середину поля
+        forRandom.remove(snake.get(0));
+        for (int i = 0; i < wallT; i ++) { // генерим заданное кол-во стен
+            Wall.generateWalls(elements, forRandom);
+        }
+
+        for (int i = 0; i < foodT; i ++) { // генерим заданное кол-во еды
+            Food.generateFoodPosition(elements, forRandom);
         }
         direction = Direction.RIGHT;
         gameOver = false;
-
     }
 
     public void startGame() {
         newGame();
-        Thread thread = new Thread(() -> {
-            while (true) { // обновление пять раз в секунду
-                if (!gameOver) {
-                    gameOver = Updater.update(gc, WIDTH, HEIGHT, TILE_SIZE, foodT, snakeL); // обновляем состояния змейки
-                    oneEvent = true; // флаг, о том, что мы поменяли направление
-                    // для многоразовых нажатий
-                    Renderer.render(gc, WIDTH, HEIGHT, TILE_SIZE); // рисуем нашу змейку
-                } else {
-                    break;
-                }
 
-                try {
-                    Thread.sleep(1000 / SPEED);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+        Thread thread = new Thread(() -> {
+            long time = 0;
+            while (true) { // обновление пять раз в секунду
+                if (System.currentTimeMillis() - time >= 1000 / SPEED) {
+                    if (!gameOver) {
+                        gameOver = Updater.update(gc, foodT, snakeL, wallT); // обновляем состояния змейки
+                        oneEvent = true; // флаг, о том, что мы поменяли направление
+                        // для многоразовых нажатий
+                        Renderer.render(gc); // рисуем нашу змейку
+                    } else {
+                        break;
+                    }
+                    time = System.currentTimeMillis();
                 }
             }
         });
-
         thread.start();
     }
 }

@@ -21,7 +21,6 @@ public class Updater {
     }
 
     private static boolean editSnake(Game.Position newHead, int WIDTH, int HEIGHT, int foodT) {
-//        Game.Position foodValue;
         snake.add(0, newHead);
         forRandom.remove(newHead);
 
@@ -53,6 +52,17 @@ public class Updater {
 
         if (editSnake(newHead, WIDTH, HEIGHT, foodT)) { // изменение змейки
             return true; // значит змейка умерла
+        }
+
+        for (int i = 0; i < countBots; i ++) {
+            Game.Position headBot = bots.get(i).get(0);
+            Game.Position newHeadBot;
+            while (true) {
+                newHeadBot = Bots.directionBotHead(headBot);
+                if (Bots.editBot(newHeadBot, WIDTH, HEIGHT, i, foodT)) {
+                    break;
+                }
+            }
         }
 
         if (snake.size() >= snakeL) { // проверка на выигрыш

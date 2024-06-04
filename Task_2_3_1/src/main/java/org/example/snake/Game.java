@@ -12,6 +12,7 @@ public class Game {
     private boolean gameOver;
     private final int snakeL;
     private static final int SPEED = 4;
+    public static final int countBots = 5;
     public static List<Game.Position> forRandom;
     public static Type[][] elements;
 
@@ -19,6 +20,7 @@ public class Game {
         SNAKE, WALL, FOOD, BOT, NOTHING
     }
     public static List<Position> snake;
+    public static List<List<Position>> bots;
     private final GraphicsContext gc;
     private final int foodT;
     private final int wallT;
@@ -73,6 +75,7 @@ public class Game {
         forRandom = new ArrayList<>();
         elements = new Type[WIDTH / TILE_SIZE_X][HEIGHT / TILE_SIZE_Y];
         snake = new ArrayList<>();
+        bots = new ArrayList<>();
 
         for (Type[] element : elements) {
             Arrays.fill(element, Type.NOTHING);
@@ -85,7 +88,11 @@ public class Game {
         }
 
         elements[WIDTH / TILE_SIZE_X / 2][HEIGHT / 2 / TILE_SIZE_Y] = Type.SNAKE; // змейку на середину поля
-        snake.add(new Position(WIDTH / 2 / TILE_SIZE_X, HEIGHT / 2 / TILE_SIZE_Y)); // змейку на середину поля
+        snake.add(new Position(WIDTH / 2 / TILE_SIZE_X, HEIGHT / 2 / TILE_SIZE_Y));
+
+
+
+
         forRandom.remove(snake.get(0));
         for (int i = 0; i < wallT; i ++) { // генерим заданное кол-во стен
             Wall.generateWalls(elements, forRandom);
@@ -94,6 +101,14 @@ public class Game {
         for (int i = 0; i < foodT; i ++) { // генерим заданное кол-во еды
             Food.generateFoodPosition(elements, forRandom);
         }
+
+        for (int i = 0; i < countBots; i ++) { // генерим заданное кол-во ботов
+            bots.add(new ArrayList<>());
+            Position coordinate = Bots.generateBotPositionfirst(elements, forRandom);
+            bots.get(i).add(coordinate);
+        }
+
+
         direction = Direction.RIGHT;
         gameOver = false;
     }

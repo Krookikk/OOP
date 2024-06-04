@@ -55,6 +55,7 @@ public class Snake extends Application {
             WIDTH = newW.intValue();
             TILE_SIZE_X = WIDTH / wid1;
             WIDTH = (WIDTH / TILE_SIZE_X * TILE_SIZE_X);
+
         });
 
         primaryStage.heightProperty().addListener((a, oldH, newH) -> {
@@ -65,5 +66,8 @@ public class Snake extends Application {
 
         Game game = new Game(gc, foodT, snakeL, wallT);
         game.startGame();
+
+
+
     }
 }
